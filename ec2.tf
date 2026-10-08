@@ -43,6 +43,8 @@ resource "aws_instance" "Docker-ec2-1" {
   key_name = "webserver_key"
   vpc_security_group_ids = [aws_security_group.All-traffic-dockerSG.id]
   associate_public_ip_address = true
+
+  user_data = file(var.user_data_path)
   tags = {
     Name = "Docker-ec2-1"
   }
@@ -56,7 +58,11 @@ resource "aws_instance" "Docker-ec2-2" {
   key_name = "webserver_key"
   vpc_security_group_ids = [aws_security_group.All-traffic-dockerSG.id]
   associate_public_ip_address = true
+
+  user_data = file(var.user_data_path)
   tags = {
     Name = "Docker-ec2-2"
   }
 }
+
+#User data
